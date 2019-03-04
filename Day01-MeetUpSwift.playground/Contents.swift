@@ -323,7 +323,6 @@ while true {
         break
     }
 }
-*/
 
 let fibonacci = [1, 1, 2, 3, 5, 8, 13, 21]
 var position = 0
@@ -335,3 +334,104 @@ while position <= 7 {
     }
     print("Fibonacci number \(position) is \(value)")
 }
+
+func myFirstFunction() {
+    let message = """
+My long
+comment
+on three line
+"""
+    
+    print(message)
+}
+
+myFirstFunction()
+
+func square(number: Int) {
+    print(number * number)
+}
+
+
+square(number: 8)
+
+func add(nbr1: Int, nbr2: Int) -> Int {
+    return nbr1 + nbr2
+}
+
+print(add(nbr1: 8, nbr2: 10))
+
+func sayHello(to name: String) {
+    print("Hello, \(name)!")
+}
+
+sayHello(to: "Simon")
+sayHello(to: "Eunju")
+
+func greet(_ person: String) {
+    print("Hello, \(person)!")
+}
+
+greet("simon")
+
+func greet(_ person: String, nicely: Bool = true) {
+    if nicely == true {
+        print("Hello, \(person)!")
+    } else {
+        print("Oh no, it's \(person) again...")
+    }
+}
+
+greet("Taylor")
+greet("Taylor", nicely: false)
+
+func square(numbers: Int...) {
+    for number in numbers {
+        print("\(number) squared is \(number * number)")
+    }
+}
+
+square(numbers: 1, 2, 3, 4, 5)
+
+enum PasswordError: Error {
+    case obvious
+}
+
+func checkPassword(_ password: String) throws -> Bool {
+    if password == "password" {
+        throw PasswordError.obvious
+    }
+    return true
+}
+
+do {
+    try checkPassword("password")
+    print("That password is good!")
+} catch {
+    print("You can't use that password.")
+}
+
+func doubleInPlace(number: inout Int) {
+    number *= 2
+}
+
+func square(number: inout Int) {
+    number *= number
+}
+
+var myNum = 10
+doubleInPlace(number: &myNum)
+
+square(number: &myNum)
+*/
+
+enum ArrayError: Error {
+    case negateIndex
+}
+func readItem(_ index: Int, from array: [String]) -> String {
+    if index < 0 {
+        throw ArrayError.negateIndex
+    }
+    return array[index]
+}
+
+
