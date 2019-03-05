@@ -422,7 +422,6 @@ var myNum = 10
 doubleInPlace(number: &myNum)
 
 square(number: &myNum)
-*/
 
 enum ArrayError: Error {
     case negateIndex
@@ -434,4 +433,102 @@ func readItem(_ index: Int, from array: [String]) -> String {
     return array[index]
 }
 
+let driving = {
+    print("I'm driving")
+}
+
+driving()
+
+let driving = { (place: String) in
+    print("I'm going to \(place) in my car")
+}
+
+driving("toto")
+
+let drivingWithReturn = { (place: String) -> String in
+    return "I'm going to \(place) in my car"
+}
+
+let message = drivingWithReturn("Paris")
+print(message)
+
+let driving = {
+    print("I'm driving my car...")
+}
+
+func travel(action: () -> Void) {
+    print("I'm getting ready to go.")
+    action()
+    print("I arrived!")
+}
+
+travel(action: driving)
+
+travel {
+    print("I'm driving my car")
+}
+
+func travel(action: (String) -> Void) {
+    print("I'm getting ready to go.")
+    action("London")
+    print("I arrived")
+}
+
+travel { (place: String) in
+    print("I'm travelling to \(place) by car.")
+}
+
+func travel(toto: (String) -> String) {
+    print("I'm getting ready to go.")
+    let description = toto("London")
+    print(description)
+    print("I arrived!")
+}
+
+travel { (place: String) -> String in
+    return "Im going to \(place) by car."
+}
+
+func travel(action: (String) -> String) {
+    print("I'm getting ready to go.")
+    let description = toto("London")
+    print(description)
+    print("I arrived!")
+}
+
+func travel() -> (String) -> Void {
+    return {
+        print("I'm going to \($0)")
+    }
+}
+
+let result = travel()
+result("London")
+
+func travel() -> (String) -> Void {
+    var counter = 1
+    
+    return {
+        print("\(counter). I'm going to \($0)")
+        counter += 1
+    }
+}
+
+let result = travel()
+
+result("London")
+result("London")
+result("London")
+result("London")
+*/
+
+let driveSafely = {
+    return "I'm being a considerate driver"
+}
+func drive(using driving: () -> Void) {
+    print("Let's get in the car")
+    driving()
+    print("We're there!")
+}
+drive(using: driveSafely)
 
