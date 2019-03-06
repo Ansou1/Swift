@@ -520,15 +520,39 @@ result("London")
 result("London")
 result("London")
 result("London")
-*/
 
-let driveSafely = {
-    return "I'm being a considerate driver"
+
+func swingBat() -> () -> Void {
+    var strikes = 0
+    return {
+        strikes += 1
+        if strikes >= 3 {
+            print("You're out!")
+        } else {
+            print("Strike \(strikes)")
+        }
+    }
 }
-func drive(using driving: () -> Void) {
-    print("Let's get in the car")
-    driving()
-    print("We're there!")
+let swing = swingBat()
+swing()
+swing()
+swing()
+
+ */
+func translate(language: String) -> (String) -> String {
+    return {
+        if language == "French" {
+            if $0 == "Hello" {
+                return "Bonjour"
+            } else {
+                return "\($0) is unknown."
+            }
+        } else {
+            return "Unknown language."
+        }
+    }
 }
-drive(using: driveSafely)
+let translator = translate(language: "French")
+let french = translator("Hello")
+
 
