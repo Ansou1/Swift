@@ -538,7 +538,6 @@ swing()
 swing()
 swing()
 
- */
 func translate(language: String) -> (String) -> String {
     return {
         if language == "French" {
@@ -555,4 +554,188 @@ func translate(language: String) -> (String) -> String {
 let translator = translate(language: "French")
 let french = translator("Hello")
 
+func travel(action: (String) -> String) {
+    print("I'm getting ready to go")
+    let description = action("Paris")
+    print(description)
+    print("I'arrived!")
+}
 
+travel { (place: String) -> String in
+        return "I'm goint to \(place) in my car"
+}
+
+func travel(action: (String, Int) -> String) {
+    print("I'm getting ready to go.")
+    let description = action("London", 60)
+    print(description)
+    print("I arrived!")
+}
+
+travel { (place: String, speed: Int) -> String in
+    return "I'm going to \(place) at \(speed) miles per hour."
+}
+
+func travel() -> (String) -> Void {
+    var counter = 1
+    return {
+        print("\(counter):I'm going to \($0)")
+        counter += 1
+    }
+}
+
+let result = travel()
+result("Paris")
+result("London")
+result("Seoul")
+result("Tokyo")
+
+struct Sport {
+    var name: String
+}
+
+var tennis = Sport(name: "Tennis")
+print(tennis.name)
+
+tennis.name = "Lawn tennis"
+print(tennis.name)
+
+struct Sport {
+    var name: String
+    var isOlympicSport: Bool
+    
+    var olympicStatus: String {
+        if isOlympicSport {
+            return "\(name) is an Olympic sport"
+        } else {
+            return "\(name) is not an Olympic sport"
+        }
+    }
+}
+
+let chessBoxing = Sport(name: "Chessboxing", isOlympicSport: false)
+print(chessBoxing.olympicStatus)
+
+struct Progress {
+    var task: String
+    var amount: Int {
+        didSet {
+            print("\(task) is now \(amount)% complete.")
+        }
+    }
+}
+
+var progress = Progress(task: "Loading data", amount: 0)
+
+progress.amount = 30
+progress.amount = 80
+progress.amount = 100
+
+struct City {
+    var population: Int
+    
+    func collectTaxes() -> Int {
+        return population * 1000
+    }
+}
+
+let London = City(population: 9_000_000)
+print(London.collectTaxes())
+
+struct Person {
+    var name: String
+    
+    mutating func makeAnonymous() {
+        name = "Anonymous"
+    }
+}
+
+var person = Person(name: "Simon")
+person.makeAnonymous()
+
+let string = "Do or not, there is the question."
+
+print(string.capitalized)
+print(string.count)
+print(string.uppercased().sorted())
+
+var toys = ["Woody"]
+print(toys.count)
+toys.append("Buzz")
+toys.index(of: "Buzz")
+print(toys.sorted())
+toys.remove(at: 0)
+
+struct User {
+    var username: String
+    
+    init() {
+        username = "Anonymous"
+        print("Creating a new user, welcone \(username)")
+    }
+}
+
+var user = User()
+user.username = "twostraws"
+
+struct Person {
+    var name: String
+    
+    init(name: String) {
+        print("My name is \(name)")
+        self.name = name
+    }
+}
+
+struct Familytree {
+    init() {
+        print("Creating family tree!")
+    }
+}
+
+struct Person {
+    var name: String
+    lazy var familyTree = Familytree()
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+var ed = Person(name: "Ed")
+ed.familyTree
+
+
+struct Student {
+    static var classSize = 0
+    var name: String
+    
+    init (name: String) {
+        self.name = name
+        Student.classSize += 1
+    }
+}
+
+print(Student.classSize)
+let ed = Student(name: "Ed")
+print(Student.classSize)
+let simon = Student(name: "Simon")
+print(Student.classSize)
+let Eunju = Student(name: "Eunju")
+print(Student.classSize)
+*/
+
+struct Person {
+    private var id: String
+    
+    init(id: String) {
+        self.id = id
+    }
+    
+    func identify() -> String {
+        return "My social security number is \(id)"
+    }
+}
+
+let ed = Person(id: "12345")
+ed.identify()
