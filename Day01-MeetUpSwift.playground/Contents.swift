@@ -723,7 +723,6 @@ let simon = Student(name: "Simon")
 print(Student.classSize)
 let Eunju = Student(name: "Eunju")
 print(Student.classSize)
-*/
 
 struct Person {
     private var id: String
@@ -739,3 +738,103 @@ struct Person {
 
 let ed = Person(id: "12345")
 ed.identify()
+
+struct School {
+    var staffNames: [String]
+    private var studentNames: [String]
+    init(staff: String...) {
+        self.staffNames = staff
+        self.studentNames = [String]()
+    }
+}
+let royalHigh = School(staff: "Mrs Hughes")
+print(royalHigh.staffNames)
+
+struct User {
+    var username: String
+    
+    init() {
+        username = "Anonymous"
+        print("Creating a new user.")
+    }
+}
+
+var user = User()
+print(user.username)
+user.username = "Toto"
+print(user.username)
+
+struct Person {
+    var name: String
+    init(name: String) {
+        print("\(name) was born!")
+        self.name = name
+    }
+}
+
+var toto = Person(name: "Napa")
+
+class Dog {
+    var name: String
+    var breed: String
+    
+    init(name: String, breed: String) {
+        self.name = name
+        self.breed = breed
+    }
+    
+    func makeNoise() {
+        print("\(name) bark...")
+    }
+}
+
+let poppy = Dog(name: "Nora", breed: "Epagneul breton")
+poppy.makeNoise()
+
+class PitBull: Dog {
+    override init(name: String, breed: String) {
+        super.init(name: name, breed: breed)
+    }
+    override func makeNoise() {
+        print("\(name) bark stronger than his parent...")
+    }
+}
+
+let badboy = PitBull(name: "Herta", breed: "Badboy")
+print(badboy.breed)
+print(badboy.name)
+
+badboy.makeNoise()
+*/
+class Singer {
+    var name = "Taylor Swift"
+}
+
+var singer = Singer()
+print(singer.name)
+
+var singerCopy = singer
+singerCopy.name = "Metalica"
+
+print(singerCopy.name)
+print(singer.name)
+
+class Person {
+    var name = "John Doe"
+    
+    init() {
+        print("\(name) is alive!")
+    }
+    deinit {
+        print("\(name) is no more!")
+    }
+    
+    func printGreeting() {
+        print("Hello, I'm \(name)")
+    }
+}
+
+for _ in 1...3 {
+    let person = Person()
+    person.printGreeting()
+}
