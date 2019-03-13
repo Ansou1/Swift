@@ -844,12 +844,14 @@ for _ in 1...3 {
 }
 */
 
-class Image {
-    var filename: String
-    var isAnimated: Bool
-    init(filename: String, isAnimated: Bool) {
-        self.filename = filename
-        self.isAnimated = isAnimated
+struct Piano {
+    var untunedKeys = 3
+    func tune() {
+        if untunedKeys > 0 {
+            untunedKeys -= 1
+        }
     }
 }
+var piano = Piano()
+piano.tune()
 
