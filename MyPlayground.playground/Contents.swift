@@ -842,16 +842,96 @@ for _ in 1...3 {
     let person = Person()
     person.printGreeting()
 }
-*/
 
-struct Piano {
-    var untunedKeys = 3
-    func tune() {
-        if untunedKeys > 0 {
-            untunedKeys -= 1
+protocol Identifiable {
+    var id: String {get set}
+}
+struct User : Identifiable {
+    var id: String
+}
+
+func displayID(thing: Identifiable) {
+    print("My ID is \(thing.id)")
+}
+
+var test = User(id: "toto")
+displayID(thing: test)
+
+protocol Payable {
+    func calculateWages() -> Int
+}
+
+protocol NeedsTraining {
+    func study()
+}
+
+protocol HasVacation {
+    func takeVacation(days: Int)
+}
+
+protocol Employee: Payable, NeedsTraining, HasVacation {
+}
+
+extension Int {
+    func squared() -> Int {
+        return self * self
+    }
+}
+
+let number = 8
+print(number.squared())
+
+extension Int {
+    var isEven: Bool {
+        return self % 2 == 0
+    }
+}
+
+let pythons = ["Eric", "Graham", "John", "Michael", "Terry", "Terry"]
+let beatles = Set(["John", "Paul", "George", "Ringo"])
+
+extension Collection {
+    func summarize() {
+        print("There are \(count) of us:")
+        
+        for name in self {
+            print(name)
         }
     }
 }
-var piano = Piano()
-piano.tune()
+
+pythons.summarize()
+beatles.summarize()
+
+protocol Identifiable {
+    var id: String {get set}
+    func identify()
+}
+
+extension Identifiable {
+    func identify() {
+        print("My ID is \(id).")
+    }
+}
+
+struct User : Identifiable {
+    var id: String
+}
+
+let twostraws = User(id: "twostraws")
+twostraws.identify()
+
+*/
+
+protocol CanFly {
+    var maximumFlightSpeed: Int { get set }
+}
+protocol CanDrive {
+    var maximumDrivingSpeed: Int { get set }
+}
+struct FlyingCar: CanFly, CanDrive {
+    var maximumFlightSpeed = 99
+    var maximumDrivingSpeed = 1001
+}
+
 
