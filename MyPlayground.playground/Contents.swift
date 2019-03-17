@@ -921,8 +921,6 @@ struct User : Identifiable {
 let twostraws = User(id: "twostraws")
 twostraws.identify()
 
-*/
-
 protocol CanFly {
     var maximumFlightSpeed: Int { get set }
 }
@@ -934,4 +932,131 @@ struct FlyingCar: CanFly, CanDrive {
     var maximumDrivingSpeed = 1001
 }
 
+var age: Int? = nil
 
+age = 38
+
+var name: String? = nil
+
+name = "toto"
+
+if let unwrapped = name {
+    print("\(unwrapped.count) letters")
+} else {
+    print("Missing name.")
+}
+
+func greet(_ name: String?) {
+    guard let unwrapped = name else {
+        print("You didn't provide any name!")
+        return
+    }
+    print("Hello, \(unwrapped)")
+}
+
+greet("Eunju")
+greet("")
+
+let str = "5"
+let num = Int(str)!
+
+print(num + 2)
+
+let age: Int! = nil
+
+func username(for id: Int) -> String? {
+    if id == 1 {
+        return "Taylor Swift"
+    } else {
+        return nil
+    }
+}
+
+let user = username(for: 15)
+print(user)
+let user2 = username(for: 15) ?? "Anonymous"
+print(user2)
+
+let names = ["John", "Paul", "Georges", "Ringo"]
+
+let beatles = names.first?.uppercased() ?? names[0]
+print(beatles)
+
+enum PasswordError : Error{
+    case obvious
+}
+
+func checkPassword(_ password: String) throws -> Bool {
+    if password == "password" {
+        throw PasswordError.obvious
+    }
+    return true
+}
+
+do {
+    try checkPassword("password")
+    print("That password is good!")
+} catch {
+    print("You can't use that password.")
+}
+
+if let result = try? checkPassword("toto") {
+    print("Result was \(result)")
+} else {
+    print("D'oh.")
+}
+
+try! checkPassword("lol")
+
+let str = "5"
+let num = Int(str)
+
+struct Person {
+    var id: String
+    
+    init?(id: String) {
+        if id.count == 9 {
+            self.id = id
+        } else {
+            return nil
+        }
+    }
+}
+
+let tryPerson = Person(id: str)
+
+class Animal {}
+class Fish: Animal {}
+class Dog: Animal {
+    func bark(){
+        print("Braking dog...")
+    }
+}
+
+let pets = [Dog(), Fish(), Dog(), Fish(), Dog(), Dog()]
+
+for pet in pets {
+    if let dog = pet as? Dog {
+        dog.bark()
+    }
+}
+*/
+
+struct Person {
+    var clothes: String {
+        willSet {
+            updateUI(msg: "I'm changing from \(clothes) to \(newValue)")
+        }
+        
+        didSet {
+            updateUI(msg: "I just changed from \(oldValue) to \(clothes)")
+        }
+    }
+}
+
+func updateUI(msg: String) {
+    print(msg)
+}
+
+var taylor = Person(clothes: "T-shirts")
+taylor.clothes = "Napa"
