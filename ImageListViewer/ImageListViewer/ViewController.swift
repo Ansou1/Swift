@@ -27,6 +27,7 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
+        pictures.sort()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +36,9 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for:indexPath)
-        cell.textLabel?.text = pictures[indexPath.row]
+        //cell.textLabel?.text = pictures[indexPath.row]
+        //var newLabel: String? = String(indexPath.row) + "/" + String(pictures.count)
+        cell.textLabel?.text = String(indexPath.row + 1) + "/" + String(pictures.count)
         return cell;
     }
 
@@ -49,7 +52,7 @@ class ViewController: UITableViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: success! Set its selectedImage property
             vc.selectedImage = pictures[indexPath.row]
-            
+            vc.numberOutof = String(indexPath.row + 1) + "/" + String(pictures.count)
             // 3: now push it onto the navigation controller
             navigationController?.pushViewController(vc, animated: true)
         }
