@@ -18,29 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-eB-Aal">
-                                <rect key="frame" x="87" y="201" width="200" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99g-wt-ioF">
+                                <rect key="frame" x="87" y="93" width="200" height="100"/>
+                                <state key="normal" image="france"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Y4-0S-Abb"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-Kw-Elj">
-                                <rect key="frame" x="87" y="322" width="200" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-eB-Aal">
+                                <rect key="frame" x="87" y="213" width="200" height="100"/>
+                                <state key="normal" image="germany"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WbL-as-li3"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99g-wt-ioF">
-                                <rect key="frame" x="87" y="87" width="200" height="100"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-Kw-Elj">
+                                <rect key="frame" x="87" y="333" width="200" height="100"/>
+                                <state key="normal" image="ireland"/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cR3-AD-tqB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="99g-wt-ioF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Hth-aL-lqp"/>
+                            <constraint firstItem="99g-wt-ioF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2Ll-i8-CnR"/>
+                            <constraint firstItem="BoG-Kw-Elj" firstAttribute="centerX" secondItem="8bs-eB-Aal" secondAttribute="centerX" id="4Nv-QB-1bw"/>
+                            <constraint firstItem="99g-wt-ioF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="29" id="7ea-Kw-Q2d"/>
+                            <constraint firstItem="8bs-eB-Aal" firstAttribute="centerX" secondItem="99g-wt-ioF" secondAttribute="centerX" id="OeB-Iv-AuA"/>
+                            <constraint firstItem="8bs-eB-Aal" firstAttribute="top" secondItem="99g-wt-ioF" secondAttribute="bottom" constant="20" id="V88-e9-4OE"/>
+                            <constraint firstItem="BoG-Kw-Elj" firstAttribute="top" secondItem="8bs-eB-Aal" secondAttribute="bottom" constant="20" id="fqI-y8-pG0"/>
                             <constraint firstItem="99g-wt-ioF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="29" id="qoh-il-bJH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="esn-qh-DIq"/>
+                    <connections>
+                        <outlet property="button1" destination="99g-wt-ioF" id="9yN-re-5jW"/>
+                        <outlet property="button2" destination="8bs-eB-Aal" id="Z3t-Ym-uff"/>
+                        <outlet property="button3" destination="BoG-Kw-Elj" id="d5c-WK-TZb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,4 +82,9 @@
             <point key="canvasLocation" x="-327" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="france" width="200" height="100"/>
+        <image name="germany" width="200" height="100"/>
+        <image name="ireland" width="200" height="100"/>
+    </resources>
 </document>
