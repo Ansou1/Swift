@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 
 
@@ -15,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
     
+    var dicFlagName: [String: String] = [:]
     var countries = [String]()
     var score: Int = 0
     var correctAnswer: Int = 0
@@ -31,8 +33,29 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
-        countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+        let fm = FileManager.default
+        let path = Bundle.main.resourcePath!
+        let items = try! fm.contentsOfDirectory(atPath: path)
         
+        for item in items {
+            if item.hasSuffix("2x.png") {
+                countries.append(item)
+            }
+        }
+        countries.sort()
+        
+        let filename = "/Users/simondaguenet/Swift/FlagGame/FlagGame/Flags.md"
+        let contents = try! String(contentsOfFile: filename)
+        let lines = contents.split(separator:"\n")
+        
+        // Iterate over each line and print the line
+        for line in lines {
+            let value = line.components(separatedBy: "|")
+            if value.count == 4 {
+                dicFlagName[value[2].trimmingCharacters(in: .whitespaces)] = value[3]
+            }
+        }
+
         askQuestion()
     }
     
@@ -44,7 +67,7 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = countries[correctAnswer].uppercased()
+        title = dicFlagName[countries[correctAnswer].components(separatedBy: "@").first!]
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {

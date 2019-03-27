@@ -19,22 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99g-wt-ioF">
-                                <rect key="frame" x="87" y="93" width="200" height="100"/>
-                                <state key="normal" image="france"/>
+                                <rect key="frame" x="176.5" y="93" width="21" height="22"/>
+                                <state key="normal" image="DE.png"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Y4-0S-Abb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-eB-Aal">
-                                <rect key="frame" x="87" y="213" width="200" height="100"/>
-                                <state key="normal" image="germany"/>
+                                <rect key="frame" x="176.5" y="135" width="21" height="22"/>
+                                <state key="normal" image="ZW.png"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WbL-as-li3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-Kw-Elj">
-                                <rect key="frame" x="87" y="333" width="200" height="100"/>
-                                <state key="normal" image="ireland"/>
+                                <rect key="frame" x="176.5" y="177" width="21" height="22"/>
+                                <state key="normal" image="US.png"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cR3-AD-tqB"/>
                                 </connections>
@@ -83,8 +83,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="france" width="200" height="100"/>
-        <image name="germany" width="200" height="100"/>
-        <image name="ireland" width="200" height="100"/>
+        <image name="DE.png" width="21" height="15"/>
+        <image name="US.png" width="21" height="15"/>
+        <image name="ZW.png" width="21" height="15"/>
     </resources>
 </document>
