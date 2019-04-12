@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var dicFlagName: [String: String] = [:]
     var countries = [String]()
     var score: Int = 0
+    var count: Int = 0
     var correctAnswer: Int = 0
     
     override func viewDidLoad() {
@@ -66,8 +67,11 @@ class ViewController: UIViewController {
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
-        
-        title = dicFlagName[countries[correctAnswer].components(separatedBy: "@").first!]
+
+        let tmpScore: String = String(score)
+        let tmpCount: String = String(count)
+        title = dicFlagName[countries[correctAnswer].components(separatedBy: "@").first!]! + " | Score: " + tmpScore + "/" + tmpCount
+        count += 1
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -81,7 +85,7 @@ class ViewController: UIViewController {
             score -= 1
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        let ac = UIAlertController(title: title, message: "Your score is \(score)\n It was the flag", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         present(ac, animated: true)
     }
