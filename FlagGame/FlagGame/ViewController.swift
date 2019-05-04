@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         let items = try! fm.contentsOfDirectory(atPath: path)
         
         for item in items {
-            if item.hasSuffix("2x.png") {
+            if item.hasSuffix("3x.png") {
                 countries.append(item)
             }
         }
