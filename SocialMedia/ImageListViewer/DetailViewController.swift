@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
         
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: []);
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem;
-    present(vc, animated: true);
+        present(vc, animated: true);
     }
     
     override func viewWillAppear(_ animated: Bool) {
